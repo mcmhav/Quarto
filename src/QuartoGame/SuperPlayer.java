@@ -41,6 +41,7 @@ public class SuperPlayer extends Player{
 		
 	}
 	
+	
 	private Piece randomPickPiece(Board board, Scanner scanner, boolean doMiniMax){
 		return board.getRemainingPieces().get((int) Math.floor(Math.random() * board.getRemainingPieces().size()));
 	}
@@ -57,6 +58,7 @@ public class SuperPlayer extends Player{
 	private Piece humanPickPiece(Board board, Scanner scanner, boolean doMiniMax){
 		return null;
 	}
+	
 	
 	private void randomPlacePiece(Board board, Piece piece, Scanner scanner,
 			boolean doMiniMax, boolean wrongPick) {
