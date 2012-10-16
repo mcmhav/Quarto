@@ -48,7 +48,7 @@ public class Game {
 			System.out.println("Player #"+this.activePlayer.getPlayerID()+"'s turn to place piece "+piece.toString());
 		}
 		
-		this.activePlayer.placePiece(board, piece, scanner, doMiniMax, false);
+		this.activePlayer.doPlacePiece(board, piece, scanner, doMiniMax, false);
 		
 		if(log){
 			System.out.println("Player #"+this.activePlayer.getPlayerID()+" has placed "+piece.toString());	
@@ -75,13 +75,13 @@ public class Game {
 		int ties = 0;
 		
 		
-		int games = 5000;
+		int games = 100;
 		boolean log = false;
 		boolean debug = false;
 		boolean printBoard = false;
 		
-		Player p1 = new Player(PlayerType.MINIMAX3, 1);
-		Player p2 = new Player(PlayerType.RANDOM, 2);
+		Player p1 = new SuperPlayer(PlayerType.RANDOM, 2);
+		Player p2 = new N00bPlayer(PlayerType.RANDOM, 1);
 		
 		System.out.println("Plays "+games+" games!");
 		while(gameCount<games){
@@ -158,15 +158,15 @@ public class Game {
 						if(log){
 							System.out.println("Its a tie!");
 						}
-					}	
+					}
 				}
 				count++;
 			}
 			gameCount++;
 		}
 		System.out.println("DONE!");
-		System.out.println("Player 1 won: "+playerOneWins+" times!");
-		System.out.println("Player 2 won: "+playerTwoWins+" times!");
+		System.out.println("Player 1 won: "+playerOneWins+" times! And spent time: " + p1.getTimeSpent());
+		System.out.println("Player 2 won: "+playerTwoWins+" times! And spent time: " + p2.getTimeSpent());
 		System.out.println("The game tied: "+ties+" times!");
 	}
 
