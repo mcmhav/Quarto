@@ -2,7 +2,7 @@ package QuartoGame;
 
 import java.util.Scanner;
 
-public class SuperPlayer extends Player{
+public class SuperPlayer extends AbstractPlayer {
 
 	public SuperPlayer(PlayerType pType, int id) {
 		super(pType, id);
@@ -16,7 +16,7 @@ public class SuperPlayer extends Player{
 			return randomPickPiece(board, scanner, doMiniMax);
 		case NOVICE:
 			return novicePickPiece(board, scanner, doMiniMax);
-		case MINIMAX3:
+		case MINIMAXD:
 			return minmaxPickPiece(board, scanner, doMiniMax);
 		case HUMAN:
 			return humanPickPiece(board, scanner, doMiniMax);
@@ -35,7 +35,7 @@ public class SuperPlayer extends Player{
 		case NOVICE:
 			novicePlacePiece(board, piece, scanner, doMiniMax, wrongPick);
 			break;
-		case MINIMAX3:
+		case MINIMAXD:
 			minmaxPlacePiece(board, piece, scanner, doMiniMax, wrongPick);
 			break;
 		case HUMAN:

@@ -2,13 +2,15 @@ package QuartoGame;
 
 import java.util.Scanner;
 
-public abstract class Player {
-	public enum PlayerType{RANDOM, NOVICE, HUMAN, MINIMAX3, MINIMAX4};
+public abstract class AbstractPlayer {
+	public enum PlayerType{RANDOM, NOVICE, HUMAN, MINIMAXD};
 	private long timeSpendt;
 	protected PlayerType playerType;
 	protected int playerID;
-	
-	public Player(PlayerType pType, int id){
+    protected int miniMaxDepth;
+
+
+    public AbstractPlayer(PlayerType pType, int id){
 		this.playerType = pType;
 		this.playerID = id;
 	}
@@ -37,6 +39,20 @@ public abstract class Player {
 		placePiece(board, piece, scanner, doMiniMax, wrongPick);
 		timeSpendt += System.currentTimeMillis() - clockStart;
 	}
+
+    public PlayerType getPlayerType() {
+        return playerType;
+    }
+
+
+    public int getMiniMaxDepth() {
+        return miniMaxDepth;
+    }
+
+
+    public void setMiniMaxDepth(int miniMaxDepth) {
+        this.miniMaxDepth = miniMaxDepth;
+    }
 	
 	protected abstract Piece pickPiece(Board board, Scanner scanner, boolean doMiniMax);
 	protected abstract void placePiece(Board board, Piece piece, Scanner scanner, boolean doMiniMax, boolean wrongPick);
