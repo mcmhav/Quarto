@@ -6,12 +6,10 @@ import java.util.Scanner;
 public class NooBPlayer extends AbstractPlayer {
 	public NooBPlayer(PlayerType pType, int id) {
 		super(pType, id);
-        this.miniMaxDepth = 0;
 	}
 
     public NooBPlayer(PlayerType pType, int id, int miniMaxDepth) {
-        super(pType,id);
-        this.miniMaxDepth = miniMaxDepth;
+        super(pType,id,miniMaxDepth);
     }
 
 	private Piece bestPick;

@@ -8,6 +8,10 @@ public class SuperPlayer extends AbstractPlayer {
 		super(pType, id);
 	}
 
+    public SuperPlayer(PlayerType pType, int id, int miniMaxDepth) {
+        super(pType, id, miniMaxDepth);
+    }
+
 	@Override
 	protected Piece pickPiece(Board board, Scanner scanner, boolean doMiniMax) {
 		
@@ -57,7 +61,7 @@ public class SuperPlayer extends AbstractPlayer {
 	
 	private Piece minmaxPickPiece(Board board, Scanner scanner, boolean doMiniMax){
 		SuperNode root = new SuperNode(board, true, false);
-		return root.bestPiece(3);
+		return root.bestPiece(miniMaxDepth);
 	}
 	
 	private Piece humanPickPiece(Board board, Scanner scanner, boolean doMiniMax){
@@ -74,7 +78,6 @@ public class SuperPlayer extends AbstractPlayer {
 	private void novicePlacePiece(Board board, Piece piece, Scanner scanner,
 			boolean doMiniMax, boolean wrongPick) {
 		SuperNode root = new SuperNode(board, true, true);
-		
 		int place = root.bestPlace(1);
 		board.placePiece(place, piece);
 	}
@@ -82,7 +85,7 @@ public class SuperPlayer extends AbstractPlayer {
 	private void minmaxPlacePiece(Board board, Piece piece, Scanner scanner,
 			boolean doMiniMax, boolean wrongPick) {
 		SuperNode root = new SuperNode(board, true, true);
-		int place = root.bestPlace(3);
+		int place = root.bestPlace(miniMaxDepth);
 		board.placePiece(place, piece);
 	}
 	

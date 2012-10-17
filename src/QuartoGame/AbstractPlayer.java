@@ -11,9 +11,15 @@ public abstract class AbstractPlayer {
 
 
     public AbstractPlayer(PlayerType pType, int id){
-		this.playerType = pType;
-		this.playerID = id;
-	}
+        this.playerType = pType;
+        this.playerID = id;
+    }
+
+    public AbstractPlayer(PlayerType pType, int id, int miniMaxDepth){
+        this.playerType = pType;
+        this.playerID = id;
+        this.miniMaxDepth = miniMaxDepth;
+    }
 	
 	public int getPlayerID() {
 		return playerID;
