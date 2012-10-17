@@ -17,7 +17,7 @@ public class SuperNode {
 	public int bestPlace(int depth){
 		int bestPlace = -1;
 		children = new ArrayList<SuperNode>();
-		int size = gameState.getFreePlaces().size();
+		int size = gameState.getRemainingPieces().size();
 		int bestValue = -10000;
 		for (int i = 0; i < size; i++) {
 			Board newGameState = new Board();
@@ -31,14 +31,7 @@ public class SuperNode {
 				bestValue = newValue;
 				bestPlace = gameState.getFreePlaces().get(i);
 			}
-			if(bestPlace == -1)
-					bestPlace = gameState.getFreePlaces().get(i);
 		}
-		if(bestPlace == -1)
-			bestPlace = 0;
-		
-		if (size == 0)
-			System.out.println("");
 		return bestPlace;
 	}
 	
@@ -66,9 +59,6 @@ public class SuperNode {
 	private int getValue(int depth, int initAlpha, int initBeta){
 		if(gameState.checkForWinner(false)){
 			return isMe? 9999 : -9999;
-		}
-		else if(gameState.getRemainingPieces().size() == 0){
-			return 0;
 		}
 		else if(depth == 0){
 			// return the heuristic value of node
@@ -108,14 +98,14 @@ public class SuperNode {
 				for(SuperNode child : children){
 					// Se her etter feil ;)
 					alpha = Math.max(alpha, child.getValue(depth -1, alpha, beta));
-					if (beta <= alpha) break; // (Beta cut-off)
+					if (initBeta <= alpha) break; // (Beta cut-off)
 				}
 				return alpha;
 			}
 			else{
 				for(SuperNode child : children){
-					beta = Math.min(beta, child.getValue(depth -1, alpha, beta));
-					if (beta <= alpha) break; // (Alpha cut-off)
+					initBeta = Math.min(initBeta, child.getValue(depth -1, alpha, beta));
+					if (initBeta <= alpha) break; // (Alpha cut-off)
 				}
 				return beta;
 			}

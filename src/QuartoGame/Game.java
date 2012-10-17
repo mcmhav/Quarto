@@ -80,8 +80,8 @@ public class Game {
 		boolean debug = false;
 		boolean printBoard = false;
 		
-		Player p1 = new N00bPlayer(PlayerType.MINIMAX3, 1);
-		Player p2 = new SuperPlayer(PlayerType.MINIMAX3, 2);
+		Player p1 = new N00bPlayer(PlayerType.NOVICE, 1);
+		Player p2 = new SuperPlayer(PlayerType.NOVICE, 2);
 		
 		System.out.println("Plays "+games+" games!");
 		while(gameCount<games){
