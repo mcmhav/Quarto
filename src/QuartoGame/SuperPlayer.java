@@ -74,6 +74,7 @@ public class SuperPlayer extends Player{
 	private void novicePlacePiece(Board board, Piece piece, Scanner scanner,
 			boolean doMiniMax, boolean wrongPick) {
 		SuperNode root = new SuperNode(board, true, true);
+		
 		int place = root.bestPlace(1);
 		board.placePiece(place, piece);
 	}
