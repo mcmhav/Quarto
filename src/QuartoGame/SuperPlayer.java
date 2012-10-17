@@ -31,12 +31,16 @@ public class SuperPlayer extends Player{
 		switch (playerType) {
 		case RANDOM:
 			randomPlacePiece(board, piece, scanner, doMiniMax, wrongPick);
+			break;
 		case NOVICE:
 			novicePlacePiece(board, piece, scanner, doMiniMax, wrongPick);
+			break;
 		case MINIMAX3:
 			minmaxPlacePiece(board, piece, scanner, doMiniMax, wrongPick);
+			break;
 		case HUMAN:
 			humanPlacePiece(board, piece, scanner, doMiniMax, wrongPick);
+			break;
 		}
 		
 	}
@@ -47,12 +51,13 @@ public class SuperPlayer extends Player{
 	}
 	
 	private Piece novicePickPiece(Board board, Scanner scanner, boolean doMiniMax){
-		
-		return null;
+		SuperNode root = new SuperNode(board, true, false);
+		return root.bestPiece(1);
 	}
 	
 	private Piece minmaxPickPiece(Board board, Scanner scanner, boolean doMiniMax){
-		return null;
+		SuperNode root = new SuperNode(board, true, false);
+		return root.bestPiece(3);
 	}
 	
 	private Piece humanPickPiece(Board board, Scanner scanner, boolean doMiniMax){
@@ -68,12 +73,16 @@ public class SuperPlayer extends Player{
 	
 	private void novicePlacePiece(Board board, Piece piece, Scanner scanner,
 			boolean doMiniMax, boolean wrongPick) {
-		
+		SuperNode root = new SuperNode(board, true, true);
+		int place = root.bestPlace(1);
+		board.placePiece(place, piece);
 	}
 	
 	private void minmaxPlacePiece(Board board, Piece piece, Scanner scanner,
 			boolean doMiniMax, boolean wrongPick) {
-		
+		SuperNode root = new SuperNode(board, true, true);
+		int place = root.bestPlace(3);
+		board.placePiece(place, piece);
 	}
 	
 	private void humanPlacePiece(Board board, Piece piece, Scanner scanner,
