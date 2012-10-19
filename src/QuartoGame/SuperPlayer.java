@@ -11,7 +11,7 @@ public class SuperPlayer extends AbstractPlayer {
     public SuperPlayer(PlayerType pType, int id, int miniMaxDepth) {
         super(pType, id, miniMaxDepth);
     }
-
+    
 	@Override
 	protected Piece pickPiece(Board board, Scanner scanner, boolean doMiniMax) {
 		
